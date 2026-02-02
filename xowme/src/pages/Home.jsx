@@ -1,39 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "../styles/Home.css";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Optional: persist dark mode in localStorage
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [darkMode]);
+
   return (
-    <div
-      className={
-        darkMode
-          ? "bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center transition-colors"
-          : "bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 min-h-screen flex flex-col items-center justify-center transition-colors"
-      }
-    >
-      <h1 className="text-4xl font-bold mb-4">Welcome to Xowme</h1>
-      <p className="mb-6 text-lg">
-        This is a simple React + Tailwind test page.
-      </p>
+    <div className="home-container">
+      {/* Floating Background Shapes */}
+      <div className="floating-circle circle1"></div>
+      <div className="floating-circle circle2"></div>
+
+      {/* Header */}
+      <header className="home-header">
+        <h1>
+          Welcome to <span className="highlight">XowME</span>
+        </h1>
+        <p>
+          We help users complete real-world tasks faster using an AI camera
+          assistant. Highlight objects on the live camera and get step-by-step guidance.
+        </p>
+      </header>
+
+      {/* Dark/Light Mode Toggle */}
       <button
-        className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+        className="mode-toggle"
         onClick={() => setDarkMode(!darkMode)}
       >
-        {darkMode ? "Light Mode" : "Dark Mode"}
+        {darkMode ? <FaSun /> : <FaMoon />}
+        <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
       </button>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 p-4 w-full max-w-5xl">
-        {[1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="p-6 rounded-lg bg-white dark:bg-gray-800 shadow hover:scale-105 transition-transform text-center"
-          >
-            <h2 className="text-xl font-semibold mb-2">Card {i}</h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              This is a simple card for testing layout and Tailwind styles.
-            </p>
-          </div>
-        ))}
+      {/* Feature Cards */}
+      <div className="cards-container">
+        <div className="card">
+          <h2>AI Camera Guidance</h2>
+          <p>See objects highlighted in real-time and follow step-by-step instructions.</p>
+        </div>
+        <div className="card">
+          <h2>Task Completion</h2>
+          <p>Complete tasks faster with visual guidance and AI-powered suggestions.</p>
+        </div>
+        <div className="card">
+          <h2>Interactive Feedback</h2>
+          <p>Get real-time feedback and tips directly from the camera assistant.</p>
+        </div>
       </div>
     </div>
   );
