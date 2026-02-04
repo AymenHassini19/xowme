@@ -31,13 +31,7 @@ export default function Home() {
           </p>
         </header>
 
-        <button 
-          className="mode-toggle" 
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? <FaSun /> : <FaMoon />}
-          {darkMode ? " Light Mode" : " Dark Mode"}
-        </button>
+      
       </section>
 
       {/* Phone Showcase Section */}
