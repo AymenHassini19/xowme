@@ -69,6 +69,11 @@
   body.dark .nav-btn.sign-up {
     background: linear-gradient(90deg, #f59e42, #6366f1);
   }
+
+  /* Move the mode-toggle (dark mode) button to the right a bit */
+  .mode-toggle {
+    margin-right: 5rem;
+  }
   
   /* Responsive */
   @media (max-width: 768px) {
@@ -80,5 +85,7 @@
       flex-direction: column;
       gap: 0.8rem;
     }
+    .mode-toggle {
+      margin-left: 0;
+    }
   }
-  

@@ -31,14 +31,7 @@ export default function Home() {
         </p>
       </header>
 
-      {/* Dark/Light Mode Toggle */}
-      <button
-        className="mode-toggle"
-        onClick={() => setDarkMode(!darkMode)}
-      >
-        {darkMode ? <FaSun /> : <FaMoon />}
-        <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
-      </button>
+      
 
       {/* Feature Cards */}
       <div className="cards-container">
