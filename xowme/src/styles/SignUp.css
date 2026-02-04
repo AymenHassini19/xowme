@@ -1,0 +1,229 @@
+/* Container */
+.signup-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #a78bfa, #ec4899, #facc15);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.7s;
+  /* Lower the container to not hide under the navbar */
+  padding-top: 200px; /* Adjust as needed to match your navbar's height */
+  box-sizing: border-box;
+}
+
+body.dark .signup-container {
+  background: linear-gradient(135deg, #191726 0%, #111729 60%, #274060 100%);
+  color: #fafcff;
+}
+
+/* Card */
+.signup-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(18px);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  z-index: 1;
+  transition: background 0.7s, color 0.7s;
+  color: inherit;
+}
+
+body.dark .signup-card {
+  background: rgba(43, 37, 64, 0.85);
+  color: #fff;
+  border: 1px solid #36397a;
+  box-shadow: 0 20px 40px rgba(24, 21, 64, 0.5);
+}
+
+/* Text */
+.signup-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.highlight {
+  color: #6366f1;
+}
+
+body.dark .highlight {
+  color: #a8b4fa;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+/* Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input row for first and last name: make smaller and centered */
+.input-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.input-row input[type="text"] {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 140px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.96rem;
+  text-align: center;
+}
+
+.signup-form input {
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.signup-form input[type="date"] {
+  color: #555;
+}
+
+body.dark .signup-form input {
+  background: #191726;
+  color: #fafcff;
+  border: 1px solid #36397a;
+}
+
+body.dark .signup-form input::placeholder {
+  color: #bfc5e2;
+}
+
+/* Primary Button */
+.signup-btn {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, background 0.5s;
+}
+
+.signup-btn:hover {
+  transform: scale(1.05);
+}
+
+body.dark .signup-btn {
+  background: linear-gradient(90deg, #15cfd1, #6366f1);
+  color: #10101a;
+  box-shadow: 0 8px 25px rgba(24, 21, 64, 0.35);
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.divider span {
+  margin: 0 1rem;
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+/* Google Button - centered */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 0.8rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.google-btn img {
+  width: 20px;
+}
+
+.google-btn:hover {
+  transform: scale(1.05);
+}
+
+body.dark .google-btn {
+  background: #2b2540;
+  color: #fafcff;
+  border: 1px solid #36397a;
+}
+
+/* Floating Circles */
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.circle1 {
+  width: 220px;
+  height: 220px;
+  background: #6366f1;
+  top: -60px;
+  left: -60px;
+}
+
+body.dark .circle1 {
+  background: #2dd4bf;
+  opacity: 0.18;
+}
+
+.circle2 {
+  width: 320px;
+  height: 320px;
+  background: #ec4899;
+  bottom: -120px;
+  right: -120px;
+}
+
+body.dark .circle2 {
+  background: #f59e42;
+  opacity: 0.18;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
