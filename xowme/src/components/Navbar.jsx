@@ -24,10 +24,11 @@ const Navbar = () => {
           <button className="nav-btn">About</button>
         </li>
         <li>
-          <button className="nav-btn">Sign In</button>
+          <Link to="/signin" className="nav-btn">
+            Sign In
+          </Link>
         </li>
         <li>
-          {/* FIXED: Sign Up uses React Router Link */}
           <Link to="/signup" className="nav-btn sign-up">
             Sign Up
           </Link>
