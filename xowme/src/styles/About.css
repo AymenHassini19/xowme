@@ -1,0 +1,188 @@
+/* Container */
+.about-container {
+    min-height: calc(100vh - 90px);
+    margin-top: 90px;
+    width: 100vw;
+    background: linear-gradient(135deg, #a78bfa, #ec4899, #facc15);
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 3rem 1.5rem;
+  }
+  
+  body.dark .about-container {
+    background: linear-gradient(135deg, #191726 0%, #111729 60%, #274060 100%);
+    color: #fafcff;
+  }
+  
+  /* Card */
+  .about-card {
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(18px);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+  
+  body.dark .about-card {
+    background: rgba(43, 37, 64, 0.85);
+    border: 1px solid #36397a;
+  }
+  
+  /* Text */
+  .about-card h1 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .highlight {
+    color: #6366f1;
+  }
+  
+  body.dark .highlight {
+    color: #a8b4fa;
+  }
+  
+  .about-text {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.7;
+  }
+  
+  /* Team section */
+  .team-section {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  
+  .team-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Team row */
+  .team-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Team member */
+  .team-member {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .team-member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Floating hover effect */
+  .team-member:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  }
+  
+  /* University section */
+  .university-section {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 4rem;
+  }
+  
+  .university-image {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    filter: brightness(0.7);
+  }
+  
+  /* Overlay */
+  .university-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+  }
+  
+  .university-overlay h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .university-overlay p {
+    max-width: 700px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+  
+  .university-overlay a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #facc15;
+    font-size: 1.1rem;
+  }
+  
+  /* Floating circles (same as other pages) */
+  .floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  .circle1 {
+    width: 220px;
+    height: 220px;
+    background: #6366f1;
+    top: -60px;
+    left: -60px;
+  }
+  
+  .circle2 {
+    width: 320px;
+    height: 320px;
+    background: #ec4899;
+    bottom: -120px;
+    right: -120px;
+  }
+  
+  body.dark .circle1 {
+    background: #2dd4bf;
+    opacity: 0.18;
+  }
+  
+  body.dark .circle2 {
+    background: #f59e42;
+    opacity: 0.18;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
