@@ -86,9 +86,13 @@ body.dark .home-header p {
 /* Phone Image Reveal Logic */
 .image-reveal-section {
   perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Make phone-wrapper transparent (no background, borders, shadow, or visible box) */
+/* Floating, Gradual Reveal for phone-wrapper */
 .phone-wrapper {
   position: relative;
   max-width: 400px;
@@ -96,30 +100,66 @@ body.dark .home-header p {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: reveal linear forwards;
+  will-change: transform, opacity, filter;
+  /* scroll-timeline for progressive scroll reveal - supported browsers will get silky effect */
+  animation: phone-float-reveal 1.3s cubic-bezier(0.5, 0, 0, 1.1) both;
   animation-timeline: view();
-  animation-range: entry 20% cover 50%;
-  /* No background and no box appearance */
+  animation-range: entry 15% cover 55%;
+  /* floating will be handled with a secondary infinite animation on the image (see below) */
+}
+
+@keyframes phone-float-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(120px) scale(0.93) rotateX(12deg) rotateZ(2deg);
+    filter: blur(8px) brightness(0.8);
+  }
+  45% {
+    opacity: 0.6;
+    transform: translateY(45px) scale(1.02) rotateX(2deg) rotateZ(-2deg);
+    filter: blur(2px) brightness(0.93);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg) rotateZ(0deg);
+    filter: blur(0) brightness(1);
+  }
 }
 
 .phone-image {
   width: 100%;
   height: auto;
   border-radius: 2rem;
-  box-shadow: 0 20px 50px rgba(113, 90, 255, 0.13);
+  box-shadow: 0 20px 60px 12px rgba(113, 90, 255, 0.15), 0 2px 32px 2px rgba(236,72,153,0.10);
   display: block;
+  /* gentle, infinite 'floating' up-down animation */
+  animation: phone-floating 5.2s ease-in-out infinite;
 }
 
-/* The "Aesthetic" Reveal Animation */
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(100px) rotateX(20deg) scale(0.8);
+@keyframes phone-floating {
+  0%, 100% {
+    transform: translateY(0) scale(1.01);
+    box-shadow: 0 20px 60px 12px rgba(113,90,255,0.15), 0 2px 32px rgba(236,72,153,0.12);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg) scale(1);
+  13% {
+    transform: translateY(-6px) scale(1.012);
+    box-shadow: 0 32px 62px 12px rgba(113,90,255,0.13), 0 7px 37px rgba(236,72,153,0.10);
+  }
+  33% {
+    transform: translateY(-14px) scale(1.016);
+    box-shadow: 0 38px 68px 15px rgba(113,90,255,0.09), 0 11px 43px rgba(236,72,153,0.08);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.019);
+    box-shadow: 0 48px 72px 20px rgba(99,102,241,0.18), 0 18px 48px rgba(250,204,21,0.09);
+  }
+  67% {
+    transform: translateY(-14px) scale(1.016);
+    box-shadow: 0 38px 68px 15px rgba(113,90,255,0.09), 0 11px 43px rgba(236,72,153,0.08);
+  }
+  87% {
+    transform: translateY(-6px) scale(1.012);
+    box-shadow: 0 32px 62px 12px rgba(113,90,255,0.13), 0 7px 37px rgba(236,72,153,0.10);
   }
 }
 
@@ -130,9 +170,17 @@ body.dark .home-header p {
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle, rgba(160, 132, 232, 0.23) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(160, 132, 232, 0.26) 0%, transparent 70%);
   z-index: -1;
   pointer-events: none;
+  opacity: 0.76;
+  filter: blur(2px);
+  animation: glow-pulse 5.2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.77;}
+  50% { opacity: 0.92;}
 }
 
 /* Mode Toggle */
