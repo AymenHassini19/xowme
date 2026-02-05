@@ -9,7 +9,8 @@ html, body {
 
 body {
   transition: background-color 0.7s ease;
-  background-color: #f4f2ff; /* Changed for softer light lavender base */
+  background: linear-gradient(135deg, #a78bfa, #ec4899, #facc15);
+  /* similar to .signup-container for persistent gradient */
 }
 
 body.dark {
@@ -23,12 +24,12 @@ body.dark {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  color: #23224a; /* Slightly deeper blue-gray for body text in light mode */
+  color: #191726; /* Use same deeper blue as .signup-container in SignUp.css */
   transition: color 0.7s;
 }
 
 body.dark .home-container {
-  color: #6ea9fa; /* Brighter, more saturated blue for high contrast on dark background */
+  color: #6ea9fa;
 }
 
 /* Sections */
@@ -52,16 +53,16 @@ section {
 .home-header h1 {
   font-size: clamp(2.5rem, 8vw, 4rem);
   margin-bottom: 1.5rem;
-  color: #715aff;  /* Subtle soft violet */
+  color: #6366f1; /* Use SignUp highlight purple for better brand harmony */
   letter-spacing: -1px;
 }
 
 body.dark .home-header h1 {
-  color: #60a7ff; /* Brighter blue for dark mode header */
+  color: #60a7ff;
 }
 
 .highlight {
-  color: #a084e8; /* Lighter purple/violet tone for highlight */
+  color: #ec4899; /* Match one of SignUp gradient stops for highlight */
 }
 
 body.dark .highlight {
@@ -72,12 +73,12 @@ body.dark .highlight {
   font-size: 1.25rem;
   max-width: 700px;
   line-height: 1.6;
-  opacity: 0.95;
-  color: #574d7c; /* Muted purple-gray for text */
+  opacity: 0.92;
+  color: #3f3751; /* Softened, similar to .signup-card body color */
 }
 
 body.dark .home-header p {
-  color: #90b8ff; /* Brighter blue for high-contrast paragraph in dark mode */
+  color: #90b8ff;
 }
 
 /* Phone Image Reveal Logic */
@@ -99,7 +100,7 @@ body.dark .home-header p {
   width: 100%;
   height: auto;
   border-radius: 2rem;
-  box-shadow: 0 20px 50px rgba(113, 90, 255, 0.13); /* Violet glow */
+  box-shadow: 0 20px 50px rgba(113, 90, 255, 0.13);
   display: block;
 }
 
@@ -137,7 +138,7 @@ body.dark .home-header p {
   border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(90deg, #715aff 50%, #a084e8 100%);
+  background: linear-gradient(90deg, #4f46e5 50%, #8b5cf6 100%);
   color: white;
   margin-top: 2rem;
   box-shadow: 0 4px 18px rgba(160, 132, 232,0.08);
@@ -147,7 +148,7 @@ body.dark .home-header p {
 .mode-toggle:hover {
   transform: scale(1.05);
   filter: brightness(1.08);
-  background: linear-gradient(90deg, #8678fc 0%, #c1b3f8 100%);
+  background: linear-gradient(90deg, #8b5cf6 0%, #facc15 100%);
 }
 
 /* Cards */
@@ -160,27 +161,27 @@ body.dark .home-header p {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.83); /* Slightly more solid, soft white base */
+  background: rgba(255, 255, 255, 0.25);   /* Match .signup-card background */
   backdrop-filter: blur(16px);
-  border: 1px solid #e9e8fb; /* Soft lilac border */
+  border: 1px solid #e5e7eb; /* More neutral, similar to .signup-card border */
   border-radius: 1.5rem;
   padding: 2.5rem;
   width: 300px;
   text-align: left;
-  box-shadow: 0 10px 38px rgba(99, 66, 245, 0.09); /* Soft purple shadow */
+  box-shadow: 0 10px 38px rgba(99, 66, 245, 0.09);
   transition: 0.4s;
-  color: #393371;
+  color: #3f3751;  /* Follows .signup-card text */
 }
 
 body.dark .card {
   background: rgba(30, 41, 59, 0.5);
   border-color: rgba(255,255,255,0.1);
-  color: #a7d1ff; /* Bright blue for high contrast in dark mode cards */
+  color: #a7d1ff;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  background: #f8f7fd;  /* Gentle lavender hint on hover */
+  background: rgba(255,255,255,0.35);
   box-shadow: 0 14px 42px rgba(160, 132, 232, 0.14);
 }
 
@@ -190,34 +191,54 @@ body.dark .card:hover {
 
 /* Floating Elements */
 .floating-circle {
-  position: fixed;
+  position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  z-index: 0;
-  opacity: 0.34;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .circle1 {
-  width: 400px;
-  height: 400px;
-  background: #c2affc;
-  top: -100px;
-  left: -100px;
+  width: 220px;
+  height: 220px;
+  background: #6366f1;
+  top: -60px;
+  left: -60px;
+}
+
+body.dark .circle1 {
+  background: #2dd4bf;
+  opacity: 0.18;
 }
 
 .circle2 {
-  width: 500px;
-  height: 500px;
-  background: #eabefc;
-  bottom: -150px;
-  right: -150px;
+  width: 320px;
+  height: 320px;
+  background: #ec4899;
+  bottom: -120px;
+  right: -120px;
+}
+
+body.dark .circle2 {
+  background: #f59e42;
+  opacity: 0.18;
+}
+
+/* Floating animation, same as SignUp.css */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .home-footer {
   padding: 2rem;
   opacity: 0.7;
   font-size: 0.95rem;
-  color: #715aff;
+  color: #6366f1; /* Use main purple from SignUp highlight */
 }
 
 body.dark .home-footer {
