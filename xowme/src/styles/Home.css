@@ -8,13 +8,15 @@ html, body {
 }
 
 body {
-  transition: background-color 0.7s ease;
+  transition: background 0.7s;
   background: linear-gradient(135deg, #a78bfa, #ec4899, #facc15);
   /* similar to .signup-container for persistent gradient */
 }
 
 body.dark {
-  background-color: #0f172a;
+  /* Full gradient for dark mode, matching SignUp.css dark style */
+  background: linear-gradient(135deg, #191726 0%, #111729 60%, #274060 100%);
+  color: #fafcff;
 }
 
 /* Increase color contrast and keep blue aesthetic for dark mode */
